@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uber Account Management</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            font-family: Arial, sans-serif;
+        }
+        .top-bar {
+            background-color: black;
+            height: 1.5cm;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .top-bar h1 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 500;
+            margin: 0;
+        }
+        .content {
+            margin-top: 2cm;
+            text-align: left;
+            font-size: 1.5rem;
+            color: black;
+            padding-left: 20px;
+        }
+        label {
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+        select {
+            padding: 10px;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            border: 2px solid black;
+            border-radius: 5px;
+            width: 300px;
+            outline: none;
+        }
+        select:focus {
+            border-color: black;
+            box-shadow: none;
+        }
+        .selection-bar {
+            margin-top: 30px;
+        }
+        .continue-btn {
+            margin-top: 30px;
+            padding: 10px;
+            font-size: 1.2rem;
+            width: 300px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .continue-btn:hover {
+            background-color: #555;
+        }
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            color: #808080;
+            text-align: left;
+            font-size: 1rem;
+            width: 100%;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>Uber</h1>
+    </div>
+    <div class="content">
+        <label for="country-select">Select Country:</label>
+        <select id="country-select">
+            <option value="">Select a country</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Bolivia">Bolivia</option>
+            <option value="Chile">Chile</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Costa Rica">Costa Rica</option>
+            <option value="Cuba">Cuba</option>
+            <option value="Dominican Republic">Dominican Republic</option>
+            <option value="Ecuador">Ecuador</option>
+            <option value="El Salvador">El Salvador</option>
+            <option value="Equatorial Guinea">Equatorial Guinea</option>
+            <option value="Guatemala">Guatemala</option>
+            <option value="Honduras">Honduras</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Nicaragua">Nicaragua</option>
+            <option value="Panama">Panama</option>
+            <option value="Paraguay">Paraguay</option>
+            <option value="Peru">Peru</option>
+            <option value="Spain">Spain</option>
+            <option value="Uruguay">Uruguay</option>
+            <option value="Venezuela">Venezuela</option>
+        </select>
+
+        <div class="selection-bar">
+            <label for="city-select">Select City:</label>
+            <select id="city-select">
+                <option value="">Select a city</option>
+            </select>
+        </div>
+
+        <div class="selection-bar">
+            <label for="action-select">What do you want to do?</label>
+            <select id="action-select">
+                <option value="register-uber">Uber: Register a new Uber account</option>
+                <option value="reactivate">Uber: Reactivate Account</option>
+                <option value="support">Uber: Contact Support</option>
+            </select>
+        </div>
+
+        <button class="continue-btn" onclick="handleContinueClick()">Continue</button>
+    </div>
+
+    <div class="footer">
+        By proceeding, you consent to receiving calls, WhatsApp or SMS/RCS messages, including by automated means, from Uber and its affiliates to the number provided.
+    </div>
+
+    <script>
+        const countrySelect = document.getElementById('country-select');
+        const citySelect = document.getElementById('city-select');
+
+        const citiesByCountry = {
+            Argentina: ['Buenos Aires', 'Córdoba', 'Mendoza', 'Rosario', 'Bariloche', 'Ushuaia'],
+            Bolivia: ['La Paz', 'Sucre', 'Santa Cruz de la Sierra', 'Cochabamba', 'Potosí'],
+            Chile: ['Santiago', 'Valparaíso', 'Concepción', 'Viña del Mar', 'Punta Arenas'],
+            Colombia: ['Bogotá', 'Medellín', 'Cali', 'Cartagena', 'Barranquilla', 'Bucaramanga'],
+            'Costa Rica': ['San José', 'Alajuela', 'Heredia', 'Liberia', 'Puntarenas'],
+            Cuba: ['Havana', 'Santiago de Cuba', 'Trinidad', 'Varadero', 'Cienfuegos'],
+            'Dominican Republic': ['Santo Domingo', 'Santiago de los Caballeros', 'Punta Cana', 'La Romana', 'Puerto Plata'],
+            Ecuador: ['Quito', 'Guayaquil', 'Cuenca', 'Loja', 'Manta'],
+            'El Salvador': ['San Salvador', 'Santa Ana', 'San Miguel', 'La Libertad', 'Ahuachapán'],
+            'Equatorial Guinea': ['Malabo', 'Bata', 'Ebebiyín'],
+            Guatemala: ['Guatemala City', 'Antigua Guatemala', 'Quetzaltenango', 'Escuintla', 'Cobán'],
+            Honduras: ['Tegucigalpa', 'San Pedro Sula', 'La Ceiba', 'Choluteca', 'Comayagua'],
+            Mexico: ['Mexico City', 'Guadalajara', 'Monterrey', 'Cancún', 'Oaxaca', 'Puebla'],
+            Nicaragua: ['Managua', 'León', 'Granada', 'Masaya', 'Estelí'],
+            Panama: ['Panama City', 'Colón', 'David', 'Santiago', 'La Chorrera'],
+            Paraguay: ['Asunción', 'Ciudad del Este', 'Encarnación', 'Villarrica', 'Pedro Juan Caballero'],
+            Peru: ['Lima', 'Cusco', 'Arequipa', 'Trujillo', 'Iquitos'],
+            Spain: ['Madrid', 'Barcelona', 'Seville', 'Valencia', 'Bilbao', 'Malaga'],
+            Uruguay: ['Montevideo', 'Punta del Este', 'Colonia del Sacramento', 'Salto', 'Paysandú'],
+            Venezuela: ['Caracas', 'Maracaibo', 'Valencia', 'Barquisimeto', 'Mérida']
+        };
+
+        countrySelect.addEventListener('change', function () {
+            const selectedCountry = countrySelect.value;
+            citySelect.innerHTML = '<option value="">Select a city</option>';
+            if (selectedCountry) {
+                const cities = citiesByCountry[selectedCountry] || [];
+                cities.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city;
+                    option.textContent = city;
+                    citySelect.appendChild(option);
+                });
+            }
+        });
+
+        function handleContinueClick() {
+            const action = document.getElementById('action-select').value;
+
+            if (action === 'register-uber') {
+                window.location.href = 'https://www.uber.com/signup'; // Redirect to Uber sign-up page
+            } else if (action === 'reactivate') {
+                window.location.href = 'reactivate.html'; // Redirect to the Reactivate Account page
+            } else if (action === 'support') {
+                window.location.href = 'https://help.uber.com/'; // Redirect to Uber support page
+            }
+        }
+    </script>
+</body>
+</html>

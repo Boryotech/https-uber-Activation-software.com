@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Activation Details</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            font-family: Arial, sans-serif;
+        }
+        .top-bar {
+            background-color: black;
+            height: 1.5cm;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .top-bar h1 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 500;
+            margin: 0;
+        }
+        .content {
+            margin: 2cm 20px 0;
+            font-size: 1.5rem;
+            color: black;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: black;
+        }
+        .submit-btn {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            background-color: #555;
+        }
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            color: #808080;
+            text-align: left;
+            font-size: 1rem;
+            width: 100%;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>Uber</h1>
+    </div>
+    <div class="content">
+        <h2>Provide Your Activation Details</h2>
+        <p>Please fill out the form below to complete the activation process.</p>
+        <form class="form-container" id="activationForm">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+            
+            <label for="middleName">Middle Name:</label>
+            <input type="text" id="middleName" name="middleName" placeholder="Enter your middle name" required>
+            
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+            
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            
+            <label for="homeAddress">Home Address:</label>
+            <input type="text" id="homeAddress" name="homeAddress" placeholder="Enter your home address" required>
+            
+            <label for="drivingLocation">Driving Location:</label>
+            <input type="text" id="drivingLocation" name="drivingLocation" placeholder="Enter your driving location" required>
+            
+            <label for="driverLicense">Driver License ID:</label>
+            <input type="text" id="driverLicense" name="driverLicense" placeholder="Enter your driver license ID" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+            
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+    <div class="footer">
+        By proceeding, you consent to providing accurate information. Failure to do so may delay the activation process.
+    </div>
+    <script>
+        document.getElementById('activationForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+            alert('Your details have been submitted successfully! Redirecting...');
+            window.location.href = "upload_documents.html"; // Replace with the next page
+        });
+    </script>
+</body>
+</html>

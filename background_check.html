@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Check</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            font-family: Arial, sans-serif;
+            height: 100%;
+        }
+        .top-bar {
+            background-color: black;
+            height: 1.5cm;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .top-bar h1 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 500;
+            margin: 0;
+        }
+        .content {
+            text-align: center;
+            font-size: 1.5rem;
+            color: black;
+            padding: 20px;
+        }
+        .loading-bar {
+            width: 80%;
+            height: 20px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            margin: 20px auto;
+            background-color: #f0f0f0;
+            position: relative;
+            overflow: hidden;
+        }
+        .loading-bar-inner {
+            height: 100%;
+            background-color: black;
+            width: 0%;
+            border-radius: 5px;
+            transition: width 10s linear;
+        }
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            color: #808080;
+            text-align: left;
+            font-size: 1rem;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>Uber</h1>
+    </div>
+    <div class="content">
+        <h2>Background Check Running</h2>
+        <p>This process will take approximately 10 minutes. Please do not close this page.</p>
+        <div class="loading-bar">
+            <div class="loading-bar-inner" id="loadingBarInner"></div>
+        </div>
+        <p id="timer">Time Remaining: 10:00</p>
+    </div>
+    <div class="footer">
+        By proceeding, you consent to receiving calls, WhatsApp, or SMS/RCS messages, including by automated means, from Uber and its affiliates to the number provided.
+    </div>
+    <script>
+        const timerElement = document.getElementById('timer');
+        const loadingBarInner = document.getElementById('loadingBarInner');
+        let countdown = 600; // 10 minutes in seconds
+
+        const updateTimer = () => {
+            const minutes = Math.floor(countdown / 60);
+            const seconds = countdown % 60;
+            timerElement.textContent = `Time Remaining: ${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+            if (countdown === 0) {
+                clearInterval(timerInterval);
+                window.location.href = "background_check_success.html";
+            }
+            countdown--;
+        };
+
+        // Start Progress Bar Animation
+        loadingBarInner.style.transition = "width 600s linear";
+        loadingBarInner.style.width = "100%";
+
+        // Start Countdown Timer
+        const timerInterval = setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>

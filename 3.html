@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Payment Method</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+        }
+        .top-bar {
+            background-color: black;
+            height: 1.5cm;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .top-bar h1 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 500;
+            margin: 0;
+        }
+        .content {
+            padding: 20px;
+        }
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align to the left */
+            gap: 20px; /* Space between payment methods */
+        }
+        .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Space between the circle and text */
+            font-size: 1.2rem;
+        }
+        .payment-button {
+            padding: 15px;
+            background-color: #f0f0f0;
+            border: 2px solid black;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 250px;
+        }
+        .payment-button:hover {
+            background-color: #ddd;
+        }
+        .selected {
+            background-color: #444;
+            color: white;
+        }
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            color: #808080;
+            text-align: left;
+            font-size: 1rem;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <h1>Uber</h1>
+    </div>
+
+    <div class="content">
+        <h2>Select Payment Method</h2>
+        <p>Please choose a payment method below:</p>
+        
+        <div class="payment-methods">
+            <div class="payment-option">
+                <input type="radio" name="paymentMethod" id="oxxo" onclick="selectPaymentMethod('OXXO')" />
+                <label for="oxxo">OXXO</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" name="paymentMethod" id="bankTransfer" onclick="selectPaymentMethod('Bank Transfer')" />
+                <label for="bankTransfer">Bank Transfer</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" name="paymentMethod" id="usdt" onclick="selectPaymentMethod('USDT')" />
+                <label for="usdt">USDT</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" name="paymentMethod" id="bitcoin" onclick="selectPaymentMethod('Bitcoin')" />
+                <label for="bitcoin">Bitcoin</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" name="paymentMethod" id="appleGiftCard" onclick="selectPaymentMethod('Apple Gift Card')" />
+                <label for="appleGiftCard">Apple Gift Card</label>
+            </div>
+        </div>
+
+        <button id="proceedButton" class="payment-button" disabled onclick="proceedToPayment()">Proceed to Payment</button>
+    </div>
+
+    <div class="footer">
+        By proceeding, you consent to providing accurate information. Failure to do so may delay the activation process.
+    </div>
+
+    <script>
+        let selectedPaymentMethod = "";
+
+        function selectPaymentMethod(method) {
+            // Enable the "Proceed to Payment" button
+            selectedPaymentMethod = method;
+            document.getElementById("proceedButton").disabled = false;
+        }
+
+        function proceedToPayment() {
+            if (selectedPaymentMethod === "") {
+                alert("Please select a payment method.");
+                return;
+            }
+
+            // Redirect to the appropriate payment page based on the selected method
+            switch (selectedPaymentMethod) {
+                case 'OXXO':
+                    window.location.href = "oxxo_payment_page.html";
+                    break;
+                case 'Bank Transfer':
+                    window.location.href = "bank_transfer_page.html";
+                    break;
+                case 'USDT':
+                    window.location.href = "usdt_payment_page.html";
+                    break;
+                case 'Bitcoin':
+                    window.location.href = "bitcoin_payment_page.html";
+                    break;
+                case 'Apple Gift Card':
+                    window.location.href = "apple_gift_card_page.html";
+                    break;
+                default:
+                    alert("Invalid selection");
+            }
+        }
+    </script>
+
+</body>
+</html>

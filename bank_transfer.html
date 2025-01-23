@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Transfer Payment</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .top-bar {
+            background-color: black;
+            height: 1.5cm;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .top-bar h1 {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        .content {
+            margin: 20px;
+            text-align: center;
+        }
+        .bank-details {
+            margin-top: 20px;
+            text-align: left;
+            font-size: 1rem;
+        }
+        .account {
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .account-number {
+            font-weight: bold;
+            color: green;
+            cursor: pointer;
+        }
+        .instructions {
+            margin-top: 20px;
+        }
+        .footer {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #808080;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <h1 id="headerTitle">Uber</h1>
+    </div>
+
+    <div class="content">
+        <h2 id="paymentTitle">Bank Transfer Payment</h2>
+        <p class="instructions" id="paymentInstructions">Please transfer the payment to one of the following bank accounts:</p>
+
+        <div class="bank-details">
+            <div class="account">
+                <strong>Bank:</strong> BBVA <br>
+                <strong>Account Number:</strong> <span class="account-number" onclick="copyToClipboard('012680015255555075')">012680015255555075</span><br>
+                <strong>Account Name:</strong> Samuel Garcia Atzin
+            </div>
+            <div class="account">
+                <strong>Bank:</strong> Banamex <br>
+                <strong>Account Number:</strong> <span class="account-number" onclick="copyToClipboard('002680904360628170')">002680904360628170</span><br>
+                <strong>Account Name:</strong> Samuel Garcia Atzin
+            </div>
+            <div class="account">
+                <strong>Bank:</strong> ALBO <br>
+                <strong>Account Number:</strong> <span class="account-number" onclick="copyToClipboard('646180146013741549')">646180146013741549</span><br>
+                <strong>Account Name:</strong> Samuel Garcia Atzin
+            </div>
+        </div>
+
+        <p class="instructions" id="confirmMessage">After making the transfer, please confirm the payment to proceed.</p>
+    </div>
+
+    <div class="footer" id="footerText">
+        By proceeding, you consent to providing accurate information. Failure to do so may delay the activation process.
+    </div>
+
+    <script>
+        // Auto-detect language and apply translations
+        const userLang = navigator.language || navigator.userLanguage;
+
+        const translations = {
+            es: {
+                headerTitle: "Uber",
+                paymentTitle: "Pago por Transferencia Bancaria",
+                paymentInstructions: "Por favor transfiere el pago a una de las siguientes cuentas bancarias:",
+                confirmMessage: "Después de realizar la transferencia, confirma el pago para continuar.",
+                footerText: "Al proceder, aceptas proporcionar información precisa. El incumplimiento puede retrasar el proceso de activación."
+            },
+            en: {
+                headerTitle: "Uber",
+                paymentTitle: "Bank Transfer Payment",
+                paymentInstructions: "Please transfer the payment to one of the following bank accounts:",
+                confirmMessage: "After making the transfer, please confirm the payment to proceed.",
+                footerText: "By proceeding, you consent to providing accurate information. Failure to do so may delay the activation process."
+            }
+        };
+
+        // Apply the translations based on the user's language
+        const selectedLang = userLang.startsWith("es") ? "es" : "en";
+        const langContent = translations[selectedLang];
+
+        document.getElementById("headerTitle").textContent = langContent.headerTitle;
+        document.getElementById("paymentTitle").textContent = langContent.paymentTitle;
+        document.getElementById("paymentInstructions").textContent = langContent.paymentInstructions;
+        document.getElementById("confirmMessage").textContent = langContent.confirmMessage;
+        document.getElementById("footerText").textContent = langContent.footerText;
+
+        // Function to copy account number to clipboard
+        function copyToClipboard(text) {
+            const tempInput = document.createElement("input");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            alert("Account number copied to clipboard!");
+        }
+    </script>
+</body>
+</html>

