@@ -23,6 +23,21 @@
             letter-spacing: 2px;
         }
     </style>
+    <script>
+        // Redirect after 5 seconds
+        setTimeout(() => {
+            window.location.href = "nextpage.html"; // Replace with your next page's file name
+        }, 5000); // 5000ms = 5 seconds
+
+        // Language auto-detection
+        document.addEventListener("DOMContentLoaded", () => {
+            const userLang = navigator.language || navigator.userLanguage;
+            const supportedLanguages = ["en", "es"]; // English and Spanish
+            const langCode = supportedLanguages.includes(userLang.slice(0, 2)) ? userLang.slice(0, 2) : "en";
+
+            document.documentElement.lang = langCode;
+        });
+    </script>
 </head>
 <body>
     <h1>Uber</h1>
