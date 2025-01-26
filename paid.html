@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Processing</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            font-family: Arial, sans-serif;
+            height: 100%;
+        }
+        .top-bar {
+            background-color: black;
+            height: 1.5cm;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .top-bar h1 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 500;
+            margin: 0;
+        }
+        .content {
+            padding: 20px;
+            font-size: 1.2rem;
+            color: black;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        .email {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: blue;
+            text-decoration: none;
+        }
+        .email:hover {
+            text-decoration: underline;
+        }
+        .note {
+            font-size: 1rem;
+            color: gray;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>Uber</h1>
+    </div>
+    <div class="content">
+        <h2 id="paymentProcessingTitle">Payment Processing</h2>
+        <p id="processingText">
+            Your payment is being processed. This typically takes one to two business days.
+        </p>
+        <p id="uploadText">
+            To ensure fast activation of your account, please upload your payment receipt to the email address below:
+        </p>
+        <a class="email" href="mailto:Uberreactivation19@gmail.com">Uberreactivation19@gmail.com</a>
+        <p id="confirmationText">
+            You will receive a confirmation email after we’ve activated your account.
+        </p>
+        <p class="note" id="noteText">
+            Note: Be sure to include your account details in the email for faster confirmation.
+        </p>
+    </div>
+    <script>
+        // Language Auto-detection
+        const userLang = navigator.language || navigator.userLanguage; 
+
+        // Elements to translate
+        const paymentProcessingTitle = document.getElementById("paymentProcessingTitle");
+        const processingText = document.getElementById("processingText");
+        const uploadText = document.getElementById("uploadText");
+        const confirmationText = document.getElementById("confirmationText");
+        const noteText = document.getElementById("noteText");
+
+        if (userLang.includes('es')) {
+            // Spanish Translation
+            paymentProcessingTitle.textContent = "Procesando Pago";
+            processingText.textContent = "Tu pago está siendo procesado. Esto normalmente toma de uno a dos días hábiles.";
+            uploadText.textContent = "Para garantizar una activación rápida de tu cuenta, sube tu recibo de pago a la dirección de correo electrónico a continuación:";
+            confirmationText.textContent = "Recibirás un correo de confirmación después de que hayamos activado tu cuenta.";
+            noteText.textContent = "Nota: Asegúrate de incluir los detalles de tu cuenta en el correo para una confirmación más rápida.";
+        }
+    </script>
+</body>
+</html>
