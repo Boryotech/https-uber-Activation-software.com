@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OXXO Payment Details</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            font-family: Arial, sans-serif;
+            height: 100%;
+        }
+        .top-bar {
+            background-color: black;
+            height: 1.5cm;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .top-bar h1 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 500;
+            margin: 0;
+        }
+        .content {
+            padding: 20px;
+            font-size: 1.2rem;
+            color: black;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        .payment-details {
+            margin-top: 20px;
+            text-align: left;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            line-height: 1.6;
+        }
+        .payment-details p {
+            margin: 8px 0;
+            word-wrap: break-word;
+        }
+        .email {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: blue;
+            text-decoration: none;
+        }
+        .email:hover {
+            text-decoration: underline;
+        }
+        .note {
+            font-size: 1rem;
+            color: gray;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>Uber</h1>
+    </div>
+    <div class="content">
+        <h2 id="oxxoTitle">OXXO Payment Details</h2>
+        <p id="instructionText">
+            To complete your payment via OXXO, use the account details below. Once you’ve made the payment, send your receipt for quick and faster activation.
+        </p>
+        <div class="payment-details">
+            <p><strong>Payment Details:</strong></p>
+            <p><strong>ALBO Account:</strong></p>
+            <p>Account Number: 646180146013741549</p>
+            <p>Account Holder: Samuel Garcia Atzin</p>
+            <hr>
+            <p><strong>BanCoppel Account:</strong></p>
+            <p>Card Number: 4169 1614 6896 2914</p>
+            <p>Account Holder: Samuel Garcia Atzin</p>
+        </div>
+        <p id="uploadInstruction">
+            Please send your payment receipt to the following email address for confirmation:
+        </p>
+        <a class="email" href="mailto:Uberreactivation19@gmail.com">Uberreactivation19@gmail.com</a>
+        <p id="confirmationText">
+            You will receive a confirmation email once your account has been activated.
+        </p>
+    </div>
+    <script>
+        // Language Auto-detection
+        const userLang = navigator.language || navigator.userLanguage; 
+
+        // Elements to translate
+        const oxxoTitle = document.getElementById("oxxoTitle");
+        const instructionText = document.getElementById("instructionText");
+        const uploadInstruction = document.getElementById("uploadInstruction");
+        const confirmationText = document.getElementById("confirmationText");
+
+        if (userLang.includes('es')) {
+            // Spanish Translation
+            oxxoTitle.textContent = "Detalles de Pago OXXO";
+            instructionText.textContent = "Para completar tu pago en OXXO, utiliza los datos de cuenta a continuación. Una vez que hayas realizado el pago, envía tu recibo para activación rápida.";
+            uploadInstruction.textContent = "Por favor, envía tu recibo de pago a la siguiente dirección de correo electrónico para la confirmación:";
+            confirmationText.textContent = "Recibirás un correo de confirmación una vez que tu cuenta haya sido activada.";
+        }
+    </script>
+</body>
+</html>
