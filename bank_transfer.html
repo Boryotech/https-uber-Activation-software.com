@@ -3,18 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bank Transfer Payment</title>
+    <title>Payment Details</title>
     <style>
-        body {
+        body, html {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
             background-color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
+            font-family: Arial, sans-serif;
+            height: 100%;
         }
         .top-bar {
             background-color: black;
@@ -27,119 +23,151 @@
         }
         .top-bar h1 {
             color: white;
-            font-size: 1.5rem;
+            font-size: 2rem;
+            font-weight: 500;
             margin: 0;
         }
         .content {
-            margin: 20px;
+            padding: 20px;
+            font-size: 1.2rem;
+            color: black;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .content h2 {
             text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
         }
-        .bank-details {
-            margin-top: 20px;
-            text-align: left;
-            font-size: 1rem;
-        }
-        .account {
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            border-radius: 5px;
+        .payment-details {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
             background-color: #f9f9f9;
         }
-        .account-number {
-            font-weight: bold;
-            color: green;
+        .payment-details p {
+            margin: 8px 0;
+            word-wrap: break-word;
+        }
+        .copyable {
+            background-color: #f2f2f2;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 5px;
             cursor: pointer;
         }
-        .instructions {
-            margin-top: 20px;
+        .copyable:hover {
+            background-color: #e6e6e6;
         }
-        .footer {
+        .buttons {
+            display: flex;
+            justify-content: center;
             margin-top: 30px;
-            padding: 20px;
-            background-color: #f2f2f2;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #808080;
-            width: 100%;
+        }
+        .buttons button {
+            margin: 0 10px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .confirm-button {
+            background-color: black;
+            color: white;
+        }
+        .confirm-button:hover {
+            background-color: #333;
+        }
+        .cancel-button {
+            background-color: red;
+            color: white;
+        }
+        .cancel-button:hover {
+            background-color: darkred;
         }
     </style>
 </head>
 <body>
     <div class="top-bar">
-        <h1 id="headerTitle">Uber</h1>
+        <h1>Uber</h1>
     </div>
-
     <div class="content">
-        <h2 id="paymentTitle">Bank Transfer Payment</h2>
-        <p class="instructions" id="paymentInstructions">Please transfer the payment to one of the following bank accounts:</p>
-
-        <div class="bank-details">
-            <div class="account">
-                <strong>Bank:</strong> BBVA <br>
-                <strong>Account Number:</strong> <span class="account-number" onclick="copyToClipboard('012680015255555075')">012680015255555075</span><br>
-                <strong>Account Name:</strong> Samuel Garcia Atzin
-            </div>
-            <div class="account">
-                <strong>Bank:</strong> Banamex <br>
-                <strong>Account Number:</strong> <span class="account-number" onclick="copyToClipboard('002680904360628170')">002680904360628170</span><br>
-                <strong>Account Name:</strong> Samuel Garcia Atzin
-            </div>
-            <div class="account">
-                <strong>Bank:</strong> ALBO <br>
-                <strong>Account Number:</strong> <span class="account-number" onclick="copyToClipboard('646180146013741549')">646180146013741549</span><br>
-                <strong>Account Name:</strong> Samuel Garcia Atzin
-            </div>
+        <h2 id="paymentTitle">Payment Details</h2>
+        <p id="instructionText">Please make your payment to one of the accounts below:</p>
+        
+        <div class="payment-details">
+            <p><strong id="account1Text">Account 1:</strong></p>
+            <p id="account1Details">Account Number: 
+                <span class="copyable" onclick="copyToClipboard('002680904360628170')">002680904360628170</span>
+            </p>
+            <p id="bank1Details">Bank: Banamex</p>
+            <p id="holder1Details">Account Holder: Samuel Garcia Atzin</p>
+            <hr>
+            <p><strong id="account2Text">Account 2:</strong></p>
+            <p id="account2Details">Account Number: 
+                <span class="copyable" onclick="copyToClipboard('012680015255555075')">012680015255555075</span>
+            </p>
+            <p id="bank2Details">Bank: Bbva</p>
+            <p id="holder2Details">Account Holder: Samuel Garcia Atzin</p>
         </div>
 
-        <p class="instructions" id="confirmMessage">After making the transfer, please confirm the payment to proceed.</p>
+        <div class="buttons">
+            <button class="confirm-button" onclick="redirectToNextPage()">Confirm</button>
+            <button class="cancel-button" onclick="cancelProcess()">Cancel</button>
+        </div>
     </div>
-
-    <div class="footer" id="footerText">
-        By proceeding, you consent to providing accurate information. Failure to do so may delay the activation process.
-    </div>
-
     <script>
-        // Auto-detect language and apply translations
-        const userLang = navigator.language || navigator.userLanguage;
+        // Language Auto-detection
+        const userLang = navigator.language || navigator.userLanguage; 
 
-        const translations = {
-            es: {
-                headerTitle: "Uber",
-                paymentTitle: "Pago por Transferencia Bancaria",
-                paymentInstructions: "Por favor transfiere el pago a una de las siguientes cuentas bancarias:",
-                confirmMessage: "Después de realizar la transferencia, confirma el pago para continuar.",
-                footerText: "Al proceder, aceptas proporcionar información precisa. El incumplimiento puede retrasar el proceso de activación."
-            },
-            en: {
-                headerTitle: "Uber",
-                paymentTitle: "Bank Transfer Payment",
-                paymentInstructions: "Please transfer the payment to one of the following bank accounts:",
-                confirmMessage: "After making the transfer, please confirm the payment to proceed.",
-                footerText: "By proceeding, you consent to providing accurate information. Failure to do so may delay the activation process."
-            }
-        };
+        // Elements to translate
+        const paymentTitle = document.getElementById("paymentTitle");
+        const instructionText = document.getElementById("instructionText");
+        const account1Text = document.getElementById("account1Text");
+        const account1Details = document.getElementById("account1Details");
+        const bank1Details = document.getElementById("bank1Details");
+        const holder1Details = document.getElementById("holder1Details");
+        const account2Text = document.getElementById("account2Text");
+        const account2Details = document.getElementById("account2Details");
+        const bank2Details = document.getElementById("bank2Details");
+        const holder2Details = document.getElementById("holder2Details");
 
-        // Apply the translations based on the user's language
-        const selectedLang = userLang.startsWith("es") ? "es" : "en";
-        const langContent = translations[selectedLang];
+        if (userLang.includes('es')) {
+            // Spanish Translation
+            paymentTitle.textContent = "Detalles del Pago";
+            instructionText.textContent = "Por favor, realice su pago a una de las cuentas a continuación:";
+            account1Text.textContent = "Cuenta 1:";
+            account1Details.innerHTML = 'Número de Cuenta: <span class="copyable" onclick="copyToClipboard(\'002680904360628170\')">002680904360628170</span>';
+            bank1Details.textContent = "Banco: Banamex";
+            holder1Details.textContent = "Titular de la Cuenta: Samuel Garcia Atzin";
+            account2Text.textContent = "Cuenta 2:";
+            account2Details.innerHTML = 'Número de Cuenta: <span class="copyable" onclick="copyToClipboard(\'012680015255555075\')">012680015255555075</span>';
+            bank2Details.textContent = "Banco: Bbva";
+            holder2Details.textContent = "Titular de la Cuenta: Samuel Garcia Atzin";
+        }
 
-        document.getElementById("headerTitle").textContent = langContent.headerTitle;
-        document.getElementById("paymentTitle").textContent = langContent.paymentTitle;
-        document.getElementById("paymentInstructions").textContent = langContent.paymentInstructions;
-        document.getElementById("confirmMessage").textContent = langContent.confirmMessage;
-        document.getElementById("footerText").textContent = langContent.footerText;
-
-        // Function to copy account number to clipboard
+        // Copy account number to clipboard
         function copyToClipboard(text) {
-            const tempInput = document.createElement("input");
-            tempInput.value = text;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
-            alert("Account number copied to clipboard!");
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Copied: " + text);
+            }).catch(err => {
+                console.error("Error copying text: ", err);
+            });
+        }
+
+        // Redirect to the next page
+        function redirectToNextPage() {
+            window.location.href = "3.html"; // Replace with the URL of the next page
+        }
+
+        // Cancel process
+        function cancelProcess() {
+            alert("The process has been canceled.");
         }
     </script>
 </body>
-</html>
+</html>, 
