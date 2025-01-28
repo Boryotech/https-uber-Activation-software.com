@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Pending Activation</title>
+    <title>Account Activation Pending Payment</title>
     <style>
         body, html {
             margin: 0;
@@ -89,9 +89,15 @@
             However, a payment is required to complete the activation process.
         </p>
         <div class="payment-details" id="paymentDetails">
-            <p><strong>Breakdown:</strong></p>
+            <p><strong>Mexico Payment Details:</strong></p>
             <p>Account Activation Payment: 600 MXN</p>
             <p>Service Fee: 150 MXN</p>
+            <p><strong>Total Payment: 750 MXN</strong></p>
+            <hr>
+            <p><strong>Colombia Payment Details:</strong></p>
+            <p>Account Activation Payment: 60,000 COP</p>
+            <p>Service Fee: 30,000 COP</p>
+            <p><strong>Total Payment: 90,000 COP</strong></p>
         </div>
         <button class="activation-button" onclick="redirectToPayment()">Confirm</button>
         <button class="activation-button" style="background-color: red;" onclick="cancelActivation()">Cancel</button>
@@ -113,9 +119,15 @@
             confirmationMessage.textContent = "Tu cuenta ha sido revisada y está lista para ser activada.";
             instructionsMessage.textContent = "Sin embargo, se requiere un pago para completar el proceso de activación.";
             paymentDetails.innerHTML = `
-                <p><strong>Desglose:</strong></p>
+                <p><strong>Detalles de Pago para México:</strong></p>
                 <p>Pago de Activación de Cuenta: 600 MXN</p>
                 <p>Tarifa de Servicio: 150 MXN</p>
+                <p><strong>Pago Total: 750 MXN</strong></p>
+                <hr>
+                <p><strong>Detalles de Pago para Colombia:</strong></p>
+                <p>Pago de Activación de Cuenta: 60,000 COP</p>
+                <p>Tarifa de Servicio: 30,000 COP</p>
+                <p><strong>Pago Total: 90,000 COP</strong></p>
             `;
         }
 
