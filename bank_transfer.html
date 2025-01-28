@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Details</title>
+    <title>Oxxo Payment Details</title>
     <style>
         body, html {
             margin: 0;
@@ -96,23 +96,31 @@
         <h1>Uber</h1>
     </div>
     <div class="content">
-        <h2 id="paymentTitle">Payment Details</h2>
-        <p id="instructionText">Please make your payment to one of the accounts below:</p>
+        <h2>Oxxo Payment Details</h2>
+        <p>Please make your payment to one of the accounts listed below:</p>
         
         <div class="payment-details">
-            <p><strong id="account1Text">Account 1:</strong></p>
-            <p id="account1Details">Account Number: 
-                <span class="copyable" onclick="copyToClipboard('002680904360628170')">002680904360628170</span>
+            <p><strong>Mexico 🇲🇽:</strong></p>
+            <p>Account 1:</p>
+            <p>Account Number: 
+                <span class="copyable" onclick="copyToClipboard('646180146013741549')">646180146013741549</span>
             </p>
-            <p id="bank1Details">Bank: Banamex</p>
-            <p id="holder1Details">Account Holder: Samuel Garcia Atzin</p>
+            <p>Bank: ALBO</p>
+            <p>Account Holder: Samuel Garcia Atzin</p>
             <hr>
-            <p><strong id="account2Text">Account 2:</strong></p>
-            <p id="account2Details">Account Number: 
-                <span class="copyable" onclick="copyToClipboard('012680015255555075')">012680015255555075</span>
+            <p>Account 2:</p>
+            <p>Account Number: 
+                <span class="copyable" onclick="copyToClipboard('4169161468962914')">4169161468962914</span>
             </p>
-            <p id="bank2Details">Bank: Bbva</p>
-            <p id="holder2Details">Account Holder: Samuel Garcia Atzin</p>
+            <p>Bank: BanCoppel (Oxxo Payments)</p>
+            <p>Account Holder: Samuel Garcia Atzin</p>
+            <hr>
+            <p><strong>Colombia 🇨🇴:</strong></p>
+            <p>Account Number: 
+                <span class="copyable" onclick="copyToClipboard('3241467374')">3241467374</span>
+            </p>
+            <p>Bank: Nequis Colombia</p>
+            <p>Account Holder: Diana Grueso</p>
         </div>
 
         <div class="buttons">
@@ -121,35 +129,6 @@
         </div>
     </div>
     <script>
-        // Language Auto-detection
-        const userLang = navigator.language || navigator.userLanguage; 
-
-        // Elements to translate
-        const paymentTitle = document.getElementById("paymentTitle");
-        const instructionText = document.getElementById("instructionText");
-        const account1Text = document.getElementById("account1Text");
-        const account1Details = document.getElementById("account1Details");
-        const bank1Details = document.getElementById("bank1Details");
-        const holder1Details = document.getElementById("holder1Details");
-        const account2Text = document.getElementById("account2Text");
-        const account2Details = document.getElementById("account2Details");
-        const bank2Details = document.getElementById("bank2Details");
-        const holder2Details = document.getElementById("holder2Details");
-
-        if (userLang.includes('es')) {
-            // Spanish Translation
-            paymentTitle.textContent = "Detalles del Pago";
-            instructionText.textContent = "Por favor, realice su pago a una de las cuentas a continuación:";
-            account1Text.textContent = "Cuenta 1:";
-            account1Details.innerHTML = 'Número de Cuenta: <span class="copyable" onclick="copyToClipboard(\'002680904360628170\')">002680904360628170</span>';
-            bank1Details.textContent = "Banco: Banamex";
-            holder1Details.textContent = "Titular de la Cuenta: Samuel Garcia Atzin";
-            account2Text.textContent = "Cuenta 2:";
-            account2Details.innerHTML = 'Número de Cuenta: <span class="copyable" onclick="copyToClipboard(\'012680015255555075\')">012680015255555075</span>';
-            bank2Details.textContent = "Banco: Bbva";
-            holder2Details.textContent = "Titular de la Cuenta: Samuel Garcia Atzin";
-        }
-
         // Copy account number to clipboard
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
@@ -161,7 +140,7 @@
 
         // Redirect to the next page
         function redirectToNextPage() {
-            window.location.href = "paid.html"; // Replace with the URL of the next page
+            window.location.href = "nextPage.html"; // Replace with the URL of the next page
         }
 
         // Cancel process
@@ -170,4 +149,4 @@
         }
     </script>
 </body>
-</html>, 
+</html>
