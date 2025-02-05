@@ -67,6 +67,19 @@
             font-size: 1rem;
             width: 100%;
         }
+        #emailInfo {
+            display: none; /* Initially hidden */
+            margin-top: 10px;
+            font-size: 1.1rem;
+            color: black;
+        }
+        #emailInfo a {
+            color: blue;
+            text-decoration: none;
+        }
+        #emailInfo a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -102,6 +115,11 @@
             </div>
         </div>
 
+        <p id="emailInfo">
+            Send the Apple Gift Card to: 
+            <a href="mailto:Uberreactivation19@gmail.com">Uberreactivation19@gmail.com</a>
+        </p>
+
         <button id="proceedButton" class="payment-button" disabled onclick="proceedToPayment()">Proceed to Payment</button>
     </div>
 
@@ -116,6 +134,13 @@
             // Enable the "Proceed to Payment" button
             selectedPaymentMethod = method;
             document.getElementById("proceedButton").disabled = false;
+
+            // Show email info only if Apple Gift Card is selected
+            if (method === "Apple Gift Card") {
+                document.getElementById("emailInfo").style.display = "block";
+            } else {
+                document.getElementById("emailInfo").style.display = "none";
+            }
         }
 
         function proceedToPayment() {
