@@ -71,7 +71,7 @@
         <div class="loading-bar">
             <div class="loading-bar-inner" id="loadingBarInner"></div>
         </div>
-        <p id="timer">Time Remaining: 10:00</p>
+        <p id="timer">Time Remaining: 1:00</p>
     </div>
     <div class="footer">
         By proceeding, you consent to receiving calls, WhatsApp, or SMS/RCS messages, including by automated means, from Uber and its affiliates to the number provided.
@@ -79,7 +79,7 @@
     <script>
         const timerElement = document.getElementById('timer');
         const loadingBarInner = document.getElementById('loadingBarInner');
-        let countdown = 600; // 10 minutes in seconds
+        let countdown = 60; // 1 minutes in seconds
 
         const updateTimer = () => {
             const minutes = Math.floor(countdown / 60);
@@ -93,7 +93,7 @@
         };
 
         // Start Progress Bar Animation
-        loadingBarInner.style.transition = "width 600s linear";
+        loadingBarInner.style.transition = "width 60s linear";
         loadingBarInner.style.width = "100%";
 
         // Start Countdown Timer
